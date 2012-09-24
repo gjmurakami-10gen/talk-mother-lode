@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 	
 	<head>
 		<meta charset="utf-8">
@@ -118,7 +118,7 @@
         </ul>
         <li>language capability</li>
         <ul>
-            <li>call chaining</li>
+            <li>method call chaining</li>
         </ul>
     </ul>
 </section>
@@ -161,10 +161,10 @@
     </code></pre>
     <p>a simple query with sort and limit</p>
     <ul>
-        <li>cursor enumerable</li>
+        <li>find - cursor enumerable</li>
         <li>expressed in Ruby code</li>
         <li>driver packages into BSON and Mongo wire protocol</li>
-        <li>no text language parsing</li>
+        <li>no text language generation or parsing</li>
     </ul>
     <pre>
     1409213	Dropbox
@@ -181,6 +181,7 @@
 </section>
 
 <section>
+    <h2>Digging Deeper</h2>
     <h3>Twitter - load tweets (simplified)</h3>
     <pre><code contenteditable>
     db = Mongo::Connection.new['twitter']
@@ -242,9 +243,9 @@
 </section>
 
 <section>
-    <h2>BSON - Binary JSON</h2>
+    <h2>Striking Gold</h2>
+    <h3>BSON - Binary JSON</h3>
     <p><a href="http://bsonspec.org/">http://bsonspec.org/</a></p>
-    <p>document - serialized object data</p>
     <pre><code contenteditable>
     {"BSON": ["awesome", 5.05, 1986]}	→
         "\x31\x00\x00\x00
@@ -269,13 +270,20 @@
 </section>
 
 <section>
-    <h2>mongo shell</h2>
-    <p>mongo shell</p>
-    <h2>Replica Sets</h2>
+    <h3>Replica Sets</h3>
     <p>high availability, backups, analytics, ...</p>
     <h3>Write Concern</h3>
     <h3>Read Preferences</h3>
-    <h2>Sharding</h2>
+</section>
+
+<section>
+    <h3>Sharding</h3>
+
+</section>
+
+<section>
+    <h3>Full Featured</h3>
+    <p>mongo shell</p>
     <p>map/reduce</p>
     <p>aggregation framework</p>
     <p>GridFS</p>
@@ -284,8 +292,9 @@
 </section>
 
 <section>
-    <h2><a href="http://mongomapper.com/">MongoMapper ODM</a></h2>
-    <p>John Nunemaker</p>
+    <h2>Full-Bore Mining with Web Frameworks</h2>
+    <h3><a href="http://mongomapper.com/">MongoMapper ODM - John Nunemaker</a></h3>
+
     <pre><code contenteditable>
     class User
       include MongoMapper::Document
@@ -313,8 +322,7 @@
 </section>
 
 <section>
-    <h2><a href="http://mongoid.org/en/mongoid/index.html">Mongoid ODM</a></h2>
-    <p>Durran Jordan</p>
+    <h3><a href="http://mongoid.org/en/mongoid/index.html">Mongoid ODM - Durran Jordan</a></h3>
     <pre><code contenteditable>
     class Artist
       include Mongoid::Document
@@ -338,8 +346,7 @@
 </section>
 
 <section>
-    <h2><a href="http://mongoid.org/en/moped/">Moped driver</a></h2>
-    <p>Bernerd Schaefer</p>
+    <h3><a href="http://mongoid.org/en/moped/">Moped driver - Bernerd Schaefer</a></h3>
     <pre><code contenteditable>
     session = Moped::Session.new([ "127.0.0.1:27017" ])
     session.use "echo_test"
@@ -358,7 +365,7 @@
 </section>
 
 <section>
-    <h2>JRuby</h2>
+    <h3>JRuby</h3>
     <ul>
         <li>Java libraries</li>
         <li>bson_java</li>
@@ -368,12 +375,28 @@
 </section>
 
 <section>
-    <h2>MongoDB Summary (I)</h2>
+    <h2>Refining Ore</h2>
+    <h3>Case study - Adobe Photoshop Lightroom</h3>
+    <ul>
+        <li>"Lightroom 3 Catalog.lrcat"</li>
+        <li>0.5 GB</li>
+        <li>66 Sqlite3 tables</li>
+        <li>20 tables with column image INTEGER</li>
+        <li>can be loaded into 40 lines of Ruby</li>
+        <li>can be reduced to 1 image collection</li>
+    </ul>
+    <br/>
+    <ul>
+
+    </ul>
+</section>
+
+<section>
+    <h2>Crafting with Gold</h2>
+    <h3>MongoDB Summary</h3>
     <ul>
         <li>replica sets for high availability</li>
         <li>sharded clusters for scaling</li>
-        <li>very low cost</li>
-        <br/>
         <br/>
         <li>very high performance</li>
         <ul>
@@ -385,11 +408,14 @@
                 <li>Hadoop connector</li>
             </ul>
         </ul>
+        <br/>
+        <li>very low cost - open source - community</li>
     </ul>
 </section>
 
 <section>
-    <h2>MongoDB Summary (II)</h2>
+    <h2>The Mother Lode</h2>
+    <h3>MongoDB Conclusion</h3>
     <ul>
         <li>easy application development</li>
         <ul>
@@ -400,6 +426,7 @@
         <br/>
         <li>well-matched to programming languages</li>
         <ul>
+            <li>bigger data</li>
             <li>Ruby</li>
         </ul>
     </ul>
@@ -407,6 +434,42 @@
 
 <section>
     <h2>Announcement</h2>
+    <h3><a href="http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest">MongoDB and Ruby Blogging Contest</a></h3>
+    <p>
+    Objective<br/>
+    <br/>
+    Write about best practices for using MongoDB with Ruby.<br/>
+    <br/>
+    Post your blog posts in the comments section of<br/>
+    this blog post by October 10 to be entered to win.
+    </p>
+    <br/>
+    <a href="http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest">http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest</a>
+</section>
+
+<section>
+    <h2>Thank you</h2>
+    <h3>and may you strike gold</h3>
+    <pre>
+    {
+        name: "Gary J. Murakami, Ph.D.",
+        title: "Ruby Evangelist / Engineer",
+        phone: "1-866-237-8815 x8015",
+        mobile: "1-908-787-6621",
+        email: "gary.murakami@10gen.com",
+        im: "gjmurakami (AIM)",
+        twitter: "@GaryMurakami",
+        blog: "grayghostwriter.blogspot.com",
+        website: "www.nobell.org",
+        linkedin: "www.linkedin.com/pub/gary-murakami/1/36a/327",
+        facebook: "facebook.com/gary.j.murakami"
+    }
+    </pre>
+    <ul>
+        <li><a href="https://github.com/gjmurakami-10gen/talk-mother-load">https://github.com/gjmurakami-10gen/talk-mother-load</a></li>
+        <li>git@github.com:gjmurakami-10gen/talk-mother-load.git</li>
+
+    </ul>
 </section>
 			</div>
 
