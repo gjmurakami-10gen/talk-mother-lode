@@ -297,7 +297,7 @@
         \x00"
     </code></pre>
     <ol>
-        <li>transfer over wire - Mongo Wire Protocol</li>
+        <li>transfer over wire - <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
         <ul>
             <li>request/query and documents to server</li>
             <li>response and documents to client</li>
@@ -332,12 +332,22 @@
 </section>
 
 <section>
-    <h3>Sharding</h3>
+    <h3><a href="http://www.mongodb.org/display/DOCS/Sharding">Sharding</a></h3>
+    <ul>
+        <li>horizontal scaling across multiple nodes</li>
+        <ul>
+            <li>balancing</li>
+            <li>failover - each shard can be a replica set</li>
+        </ul>
+        <li>shard key - partition by range</li>
+        <li>routing processes - mongos</li>
+    </ul>
+    <img src="images/sharding.png" style="float:right"/>
 
 </section>
 
 <section>
-    <h3>Full Featured</h3>
+    <h3>MongoDB is Full Featured</h3>
     <p>mongo shell</p>
     <p>map/reduce</p>
     <p>aggregation framework</p>
@@ -375,6 +385,7 @@
         <li>good example for Ruby metaprogramming</li>
         <li>small is beautiful</li>
     </ul>
+    <img src="images/mongomapper-logo.png" style="float:right"/>
 </section>
 
 <section>
@@ -406,6 +417,7 @@
         <li>indexing</li>
         <li>extras</li>
     </ul>
+    <img src="images/mongoid-logo.png" style="float:right;width:199px"/>
 </section>
 
 <section>
