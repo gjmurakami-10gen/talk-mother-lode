@@ -6,7 +6,7 @@
 
     <title>Introduction to MongoDB and Ruby</title>
 
-    <meta name="description" content="JSON-like (or BSON-like) initializers in C">
+    <meta name="description" content="MongoDB: Ruby's Mother Load - or - MongoDB and Ruby: Happy Together">
     <meta name="author" content="Gary J. Murakami">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,7 +94,7 @@
 <section>
     <h2>MongoDB: Ruby's Mother Lode</h2>
     <div style="float:left">
-        <img src="images/ruby-logo.gif" style="border-width:0; background-color:white;"/>
+        <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" style="border-width:0; background-color:white;"/></a>
     </div>
     Ruby is a gem of a programming <br/>language<br/>
     dynamic, multi-paradigm<br/>
@@ -102,15 +102,15 @@
     <div style="clear:both"></div>
     <br/>
     <div style="float:left">
-        <img src="images/logo-mongodb.png" width="331" style="border-width:0; background-color: #402817;"/>
+        <a href="http://www.mongodb.org/"><img src="images/logo-mongodb.png" width="331" style="border-width:0; background-color: #402817;"/></a>
     </div>
     MongoDB is the mother load of DBs<br/>
-    BSON documents, high-performance<br/>
+    <a href="http://bsonspec.org/">BSON</a> documents, high-performance<br/>
     indexing, replication, sharding<br/>
     adaptable, powerful, enjoyable</br>
     <div style="clear:both"></div>
     <br/>
-    <p>Ruby and MongoDB are well matched</p>
+    <p><a href="http://www.ruby-lang.org/en/">Ruby</a> and <a href="http://www.mongodb.org/">MongoDB</a> are well matched</p>
 
 </section>
 
@@ -148,7 +148,7 @@
         friends_ids_uri = "https://api.twitter.com/1/friends/ids.json?cursor=-1&screen_name=#{screen_name}"
         friend_ids = JSON.parse(HTTPClient.get(friends_ids_uri).body)['ids']
     </code></pre>
-    <p>a few lines of Ruby gets and parses JSON data from the web</p>
+    <p>a few lines of Ruby gets and parses <a href="http://www.json.org/">JSON</a> data from the web - twitter <a href="https://dev.twitter.com/docs/api/1">API</a></p>
     <ul>
         <li>libraries/gems</li>
         <ul>
@@ -160,6 +160,7 @@
             <li>method call chaining</li>
         </ul>
     </ul>
+    <a href="https://twitter.com/"><img src="images/twitter-bird-white-on-blue.png" style="border-width:0; width:200px; float:right"/></a>
 </section>
 
 <section>
@@ -173,13 +174,13 @@
             users_lookup_uri = "https://api.twitter.com/1/users/lookup.json?user_id=#{ids.join(',')}"
             response = HTTPClient.get(users_lookup_uri)
 
-            docs = JSON.parse(response.body) # high-level objects
+            docs = JSON.parse(response.body) # high-level objects - Array of Hashes
             docs.each{|doc| doc['_id'] = doc['id']} # user supplied _id
             collection.insert(docs, :safe => true) # bulk insert
         end
         puts "users:#{collection.count}"
     </code></pre>
-    <p>a small number of lines load JSON data from the web into a collection</p>
+    <p>a small number of lines load <a href="http://www.json.org/">JSON</a> data from the web into a collection</p>
     <ul>
         <li>DB connection, database, collection</li>
         <li>docs - Ruby Array of Hashes from JSON parsing</li>
@@ -202,7 +203,7 @@
     <ul>
         <li>find - cursor enumerable</li>
         <li>expressed in Ruby code</li>
-        <li>driver packages into BSON and Mongo wire protocol</li>
+        <li>driver packages into <a href="http://bsonspec.org/">BSON</a> and <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
         <li>no text language generation or parsing</li>
     </ul>
     <pre>
@@ -264,7 +265,7 @@
     </code></pre>
     <p>a simple query with a query selector, sort and limit</p>
     <ul>
-        <li>Mongo query language</li>
+        <li><a href="http://www.mongodb.org/display/DOCS/Querying">MongoDB query language</a></li>
         <li>dot notation for nested sub-document fields</li>
     </ul>
     <pre>
@@ -297,6 +298,12 @@
         \x00"
     </code></pre>
     <ol>
+        <li>base types extended to match modern programming languages</li>
+        <!--
+        <ul>
+            <li>double, string, embedded document, array, object id, boolean, datetime, null, regex, JS code, symbol, 32-bit integer, timestamp, 64-bit integer, min key, max key</li>
+        </ul>
+        -->
         <li>transfer over wire - <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
         <ul>
             <li>request/query and documents to server</li>
@@ -311,7 +318,9 @@
 <section>
     <img src="images/replset.png" style="float:right"/>
     <h3><a href="http://www.mongodb.org/display/DOCS/Replica+Sets">Replica Sets</a></h3>
-    <p>multiple database server nodes - one primary, many secondary members</p>
+    <p>multiple database server nodes</p>
+    <p>one primary member, many secondary members</p>
+    <br/>
     <ul>
         <li>high availability</li>
         <ul>
@@ -336,42 +345,70 @@
     <ul>
         <li>horizontal scaling across multiple nodes</li>
         <ul>
-            <li>balancing</li>
+            <li>automatic balancing</li>
             <li>failover - each shard can be a replica set</li>
         </ul>
         <li>shard key - partition by range</li>
+        <li>chunks up to 64MB</li>
         <li>routing processes - mongos</li>
+        <br/>
     </ul>
     <img src="images/sharding.png" style="float:right"/>
 
 </section>
 
 <section>
-    <h3>MongoDB is Full Featured</h3>
-    <p>mongo shell</p>
-    <p>map/reduce</p>
-    <p>aggregation framework</p>
-    <p>GridFS</p>
-    <p>Capped collections</p>
-    <p>Hadoop connector</p>
+    <h2>Nuggets</h2>
+    <h3>More MongoDB Features</h3>
+    <ul>
+        <li><a href="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell">mongo</a> shell</li>
+        <ul>
+            <li>JavaScript, native for server-side processing</li>
+            <li>highly recommended for development and administration</li>
+        </ul>
+        <li><a href="http://www.mongodb.org/display/DOCS/MapReduce">map/reduce</a></li>
+        <uL>
+            <li>batch processing of data and aggregation operations</li>
+            <!--<li>all input coming from a collection and output going to a collection</li>-->
+        </uL>
+        <li><a href="http://docs.mongodb.org/manual/applications/aggregation/l">aggregation framework</a></li>
+        <ul>
+            <li>calculate aggregated values without having to use map-reduce</li>
+            <li>pipeline, operators, expressions</li>
+        </ul>
+        <li><a href="http://www.mongodb.org/display/DOCS/GridFS">GridFS</a></li>
+        <ul>
+            <li>specification for storing large files in MongoDB chunks usually 256KB</li>
+        </ul>
+        <li><a href="http://www.mongodb.org/display/DOCS/Capped+Collections">Capped collections</a></li>
+        <ul>
+            <li>fixed sized collections that have a very high performance auto-FIFO age-out feature</li>
+        </ul>
+        <li><a href="http://api.mongodb.org/hadoop/MongoDB%2BHadoop+Connector.html">Hadoop connector</a></li>
+        <ul>
+            <li>reading MongoDB data into Hadoop as well as writing map/reduce results back out</li>
+        </ul>
+    </ul>
 </section>
 
 <section>
+    <img src="images/rails.png" style="border-width:0; float:right"/>
     <h2>Full-Bore Mining with Web Frameworks</h2>
+    <p>Ruby on Rails, Sinatra, etc.</p>
     <h3><a href="http://mongomapper.com/">MongoMapper ODM - John Nunemaker</a></h3>
 
     <pre><code contenteditable>
         class User
-        include MongoMapper::Document
-        key :name, String
-        key :age,  Integer
-        many :hobbies
+            include MongoMapper::Document
+            key :name, String
+            key :age,  Integer
+            many :hobbies
         end
 
         class Hobby
-        include MongoMapper::EmbeddedDocument
-        key :name,    String
-        key :started, Time
+            include MongoMapper::EmbeddedDocument
+            key :name,    String
+            key :started, Time
         end
 
         user = User.new(:name => 'Brandon')
@@ -392,15 +429,15 @@
     <h3><a href="http://mongoid.org/en/mongoid/index.html">Mongoid ODM - Durran Jordan</a></h3>
     <pre><code contenteditable>
         class Artist
-        include Mongoid::Document
-        field :name, type: String
-        embeds_many :instruments
+            include Mongoid::Document
+            field :name, type: String
+            embeds_many :instruments
         end
 
         class Instrument
-        include Mongoid::Document
-        field :name, type: String
-        embedded_in :artist
+            include Mongoid::Document
+            field :name, type: String
+            embedded_in :artist
         end
 
         syd = Artist.where(name: "Syd Vicious").between(age: 18..25).first
@@ -432,47 +469,66 @@
 
         session[:artists].find(name: "Syd Vicious").update(:$push => { instruments: { name: "Bass" }})
     </code></pre>
-    <p>Moped is a MongoDB driver for Ruby,<br/>
-       which exposes a simple, elegant, and fast API.<br/>
-       Moped is the supported driver for Mongoid<br/>
-       from version 3 and higher.</p>
+    <p>a MongoDB driver for Ruby which exposes a simple, elegant, and fast API.</p>
     <ul>
         <li>fast, thread-safe, uses <a href="https://github.com/mperham/sidekiq">sidekiq</a></li>
         <li>pure Ruby - no C extensions</li>
         <li>metaprogramming - extends standard classes</li>
         <li>Ruby > 1.9</li>
+        <li>used by Mongoid 3</li>
     </ul>
 </section>
 
 <section>
-    <h3>JRuby</h3>
+    <a href="http://jruby.org/"><img src="images/jruby-logo.png" style="border-width:0; float:right"/></a>
+    <h3><a href="http://jruby.org/">JRuby</a></h3>
     <ul>
-        <li>Java libraries</li>
+        <li>The Best of the JVM</li>
+        <ul>
+            <li>High performance</li>
+            <li>Real threading - multi-core parallelism</li>
+            <li>Vast array of libraries</li>
+        </ul>
+        <br/>
+        <li>It's Just Ruby</li>
+        <ul>
+            <li>Ruby 1.8.7 & 1.9.2 compatible</li>
+            <li>Both versions in single install</li>
+        </ul>
+        <br/>
         <li>bson_java</li>
-        <li>Mongo Hadoop connector(?)</li>
-        <li>multi-core parallelism</li>
+        <li>Mongo Hadoop connector</li>
     </ul>
 </section>
 
 <section>
-    <h2>Refining Ore</h2>
-    <h3>Case study - Adobe Photoshop Lightroom</h3>
+    <h2>Fool's Gold - RDBMS Case Study</h2>
+    <img src="images/photoshop_Lightroom_1AF9606.jpeg" style="border-width:0; float:right"/>
+    <h3><a href="http://www.adobe.com/products/photoshop-lightroom.html">Adobe Photoshop Lightroom</a></h3>
+    <p>"Lightroom 3 Catalog.lrcat"</p>
     <ul>
-        <li>"Lightroom 3 Catalog.lrcat"</li>
         <li>0.5 GB</li>
         <li>66 Sqlite3 tables</li>
         <li>20 tables with column image INTEGER</li>
-        <li>can be loaded into 40 lines of Ruby</li>
+        <br/>
+        <li>can be loaded with 40 lines of Ruby</li>
         <li>can be reduced to 1 image collection</li>
     </ul>
-    <br/>
+    <br>
+    <h3>The cost of using RDBMS for persistence</h3>
     <ul>
-
+        <li>RDBMS flattened and normalized our data</li>
+        <br/>
+        <li>RDBMS costs O(10**6) - O(1000000) and more with many joins</li>
+        <ul>
+            <li>Memory O(10**9/sec) - O(1000000000)</li>
+            <li>RDBMS O(10**3/sec) - O(1000)</li>
+        </ul>
     </ul>
 </section>
 
 <section>
-    <h2>Crafting with Gold</h2>
+    <h2>The Mother Lode</h2>
     <h3>MongoDB Summary</h3>
     <ul>
         <li>replica sets for high availability</li>
@@ -494,22 +550,25 @@
 </section>
 
 <section>
-    <h2>The Mother Lode</h2>
     <h3>MongoDB Conclusion</h3>
     <ul>
-        <li>easy application development</li>
+        <li>enjoyable software development</li>
         <ul>
             <li>10gen and Moped Ruby drivers</li>
             <li>MongoMapper and Mongoid ODMs</li>
-            <li>no schema migrations</li>
+            <li>no schema migrations forced</li>
         </ul>
         <br/>
         <li>well-matched to programming languages</li>
         <ul>
             <li>bigger data</li>
-            <li>Ruby</li>
+            <li>Ruby and objects</li>
         </ul>
     </ul>
+    <div>
+        <a href="http://www.mongodb.org/"><img src="images/logo-mongodb.png" height="121" style="border-width:0; background-color: #402817;"/></a>
+        <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" style="border-width:0; background-color:white;"/></a>
+    </div>
 </section>
 
 <section>
@@ -525,25 +584,26 @@
     </p>
     <br/>
     <a href="http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest">http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest</a>
+    <img src="images/10gen_new_logo.png" style="border-width:0; background-color:white; border-width: 20px"/>
 </section>
 
 <section>
     <h2>Thank you</h2>
     <h3>and may you strike gold</h3>
     <pre>
-    {
-        name: "Gary J. Murakami, Ph.D.",
-        title: "Ruby Evangelist / Engineer",
-        phone: "1-866-237-8815 x8015",
-        mobile: "1-908-787-6621",
-        email: "gary.murakami@10gen.com",
-        im: "gjmurakami (AIM)",
-        twitter: "@GaryMurakami",
-        blog: "grayghostwriter.blogspot.com",
-        website: "www.nobell.org",
-        linkedin: "www.linkedin.com/pub/gary-murakami/1/36a/327",
-        facebook: "facebook.com/gary.j.murakami"
-    }
+                        {
+                            name: "Gary J. Murakami, Ph.D.",
+                            title: "Lead Engineer and Ruby Evangelist",
+                            phone: "1-866-237-8815 x8015",
+                            mobile: "1-908-787-6621",
+                            email: "gary.murakami@10gen.com",
+                            im: "gjmurakami (AIM)",
+                            twitter: "@GaryMurakami",
+                            blog: "grayghostwriter.blogspot.com",
+                            website: "www.nobell.org",
+                            linkedin: "www.linkedin.com/pub/gary-murakami/1/36a/327",
+                            facebook: "facebook.com/gary.j.murakami"
+                        }
     </pre>
     <ul>
         <li><a href="https://github.com/gjmurakami-10gen/talk-mother-load">https://github.com/gjmurakami-10gen/talk-mother-load</a></li>
