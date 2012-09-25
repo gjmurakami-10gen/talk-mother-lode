@@ -124,7 +124,7 @@
 </section>
 
 <section>
-    <h2>Outfitting</h2>
+    <h2>Outfitting Beyond Your Pickaxe Book</h2>
     <h3><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">Mac OS X</a>- <a href="http://www.mongodb.org/display/DOCS/Quickstart">MongoDB Quickstart</a></h3>
     <ul>
         <li>brew update</li>
@@ -189,7 +189,7 @@
 
             docs = JSON.parse(response.body) # high-level objects - Array of Hashes
             docs.each{|doc| doc['_id'] = doc['id']} # user supplied _id
-            collection.insert(docs, :safe => true) # bulk insert - best practices
+            collection.insert(docs, :safe => true) # no schema! - bulk insert - best practices
         end
         puts "users:#{collection.count}"
     </code></pre>
@@ -531,7 +531,7 @@
     <br>
     <h3>The cost of using RDBMS for persistence</h3>
     <ul>
-        <li>RDBMS flattened and normalized our data</li>
+        <li>RDBMS flattened and normalized our data into rigid tables</li>
         <br/>
         <li>RDBMS costs O(10**6) - O(1000000) and more with many joins</li>
         <ul>
