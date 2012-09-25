@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -42,7 +43,7 @@
 
 <section>
   <section>
-    <h2>Introduction to MongoDB and Ruby</h2>
+    <h2><a href="https://github.com/gjmurakami-10gen/talk-mother-load">Introduction to MongoDB and Ruby</a></h2>
     <p>Gary J. Murakami, Ph.D.</p>
     <br/>
     <p>Lead Engineer & Ruby Evangelist</p>
@@ -50,9 +51,12 @@
     <p><a href="mailto:gary.murakami@10gen.com">gary.murakami@10gen.com</a></p>
     <br/>
     <p>Tuesday, September 25, 2012</p>
+    <br/>
+    <br/>
+    <p><a href="https://github.com/gjmurakami-10gen/talk-mother-load">https://github.com/gjmurakami-10gen/talk-mother-load</a></p>
   </section>
   <section>
-    <h2>Introduction to MongoDB and Ruby</h2>
+    <h2><a href="https://github.com/gjmurakami-10gen/talk-mother-load">Introduction to MongoDB and Ruby</a></h2>
     <p>Gary J. Murakami, Ph.D.</p>
     <p>Lead Engineer & Ruby Evangelist</p>
     <br/>
@@ -71,7 +75,7 @@
     For any other issues please email webinars@10gen.com.<br/>
   </section>
   <section>
-    <h2>Introduction to MongoDB and Ruby</h2>
+    <h2><a href="https://github.com/gjmurakami-10gen/talk-mother-load">Introduction to MongoDB and Ruby</a></h2>
     <p>Gary J. Murakami, Ph.D.</p>
     <p>Lead Engineer & Ruby Evangelist</p>
     <br/>
@@ -92,6 +96,11 @@
 </section>
 
 <section>
+    <h2>The California Gold Rush of 1849</h2>
+    <img src="images/sanfranciscoharbor.jpg"/>
+</section>
+
+<section>
     <h2>MongoDB: Ruby's Mother Lode</h2>
     <div style="float:left">
         <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" style="border-width:0; background-color:white;"/></a>
@@ -107,7 +116,7 @@
     MongoDB is the mother load of DBs<br/>
     <a href="http://bsonspec.org/">BSON</a> documents, high-performance<br/>
     indexing, replication, sharding<br/>
-    adaptable, powerful, enjoyable</br>
+    flexible, powerful, enjoyable</br>
     <div style="clear:both"></div>
     <br/>
     <p><a href="http://www.ruby-lang.org/en/">Ruby</a> and <a href="http://www.mongodb.org/">MongoDB</a> are well matched</p>
@@ -174,13 +183,13 @@
         db = connection['twitter']
         collection = db['users']
 
-        friend_ids.each_slice(100) do |ids|
+        friend_ids.each_slice(100) do |ids| # best practices
             users_lookup_uri = "https://api.twitter.com/1/users/lookup.json?user_id=#{ids.join(',')}"
             response = HTTPClient.get(users_lookup_uri)
 
             docs = JSON.parse(response.body) # high-level objects - Array of Hashes
             docs.each{|doc| doc['_id'] = doc['id']} # user supplied _id
-            collection.insert(docs, :safe => true) # bulk insert
+            collection.insert(docs, :safe => true) # bulk insert - best practices
         end
         puts "users:#{collection.count}"
     </code></pre>
@@ -195,6 +204,7 @@
 </section>
 
 <section>
+    <h2>Hitting Paydirt</h2>
     <h3>Twitter top 10 users by followers count</h3>
     <pre><code contenteditable>
         users = Mongo::Connection.new['twitter']['users']
@@ -207,7 +217,7 @@
     <ul>
         <li>find - cursor enumerable</li>
         <li>expressed in Ruby code</li>
-        <li>driver packages into <a href="http://bsonspec.org/">BSON</a> and <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
+        <li>driver serializes into <a href="http://bsonspec.org/">BSON</a> and <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
         <li>no text language generation or parsing</li>
     </ul>
     <pre>
@@ -310,7 +320,7 @@
         -->
         <li>transfer over wire - <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
         <ul>
-            <li>request/query and documents to server</li>
+            <li>request payload includes query and documents to server</li>
             <li>response and documents to client</li>
         </ul>
         <li>store on server disk</li>
@@ -320,7 +330,6 @@
 </section>
 
 <section>
-    <img src="images/replset.png" style="float:right"/>
     <h3><a href="http://www.mongodb.org/display/DOCS/Replica+Sets">Replica Sets</a></h3>
     <p>multiple database server nodes</p>
     <p>one primary member, many secondary members</p>
@@ -342,6 +351,7 @@
             <li>integration with external systems</li>
         </ul>
     </ul>
+    <img src="images/replset.png" style="width:700px; float:right"/>
 </section>
 
 <section>
@@ -357,7 +367,7 @@
         <li>routing processes - mongos</li>
         <br/>
     </ul>
-    <img src="images/sharding.png" style="float:right"/>
+    <img src="images/sharding.png" style="width:800px; float:right"/>
 
 </section>
 
