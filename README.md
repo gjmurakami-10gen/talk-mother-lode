@@ -12,5 +12,17 @@ Tuesday, September 25, 2012
 
 webinar
 
+NOTES
+=====
+
+To view with images, clone the repository and view index.html as a local file.
+At present, if you use the server, the images are not served.
+
+To print, use chrome, view index.html?print-pdf as a local file.
+Print (clover-P), change Destination to Save as PDF, Layout Landscape
+
+pdf.css includes font size changes and removing "a" from font-size
+so that headings with anchors remain at heading font size.
+
 uses: reveal.js - please see README-reveal.js
 

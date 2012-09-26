@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -55,6 +54,7 @@
     <br/>
     <p><a href="https://github.com/gjmurakami-10gen/talk-mother-load">https://github.com/gjmurakami-10gen/talk-mother-load</a></p>
   </section>
+<!--
   <section>
     <h2><a href="https://github.com/gjmurakami-10gen/talk-mother-load">Introduction to MongoDB and Ruby</a></h2>
     <p>Gary J. Murakami, Ph.D.</p>
@@ -62,17 +62,19 @@
     <br/>
     <p>Tuesday, September 25, 2012</p>
     <br/>
+    <p>
     EARLY Session<br/>
-    Audio should start immediatly when you log into the event via Audio Broadcast.<br/>
-    You will need a Voip headset and reliable internet connection for Audio Broadcast.<br/>
+    Audio should start immediately when you log into the event via Audio Broadcast.<br/>
+    You will need a VOIP headset and reliable internet connection for Audio Broadcast.<br/>
     If you are having issues connecting, please dial 1-877-668-4493; Access code: 662 870 989.<br/>
     Global dial-in numbers can be found on the Event Info tab of your WebEx Event Center screen.<br/>
     <br/>
-    There is a Q&A following the webinar. You can enter questions in the chat box to the Host.<br/>
+    There is a Q&amp;A following the webinar. You can enter questions in the chat box to the Host.<br/>
     <br/>
     A recording of the webinar will be available 24 hours after the event is complete.<br/>
     <br/>
     For any other issues please email webinars@10gen.com.<br/>
+    </p>
   </section>
   <section>
     <h2><a href="https://github.com/gjmurakami-10gen/talk-mother-load">Introduction to MongoDB and Ruby</a></h2>
@@ -81,29 +83,32 @@
     <br/>
     <p>Tuesday, September 25, 2012</p>
     <br/>
+    <p>
     LATE Session<br/>
-    Audio should start immediatly when you log into the event via Audio Broadcast.<br/>
-    You will need a Voip headset and reliable internet connection for Audio Broadcast.<br/>
+    Audio should start immediately when you log into the event via Audio Broadcast.<br/>
+    You will need a VOIP headset and reliable internet connection for Audio Broadcast.<br/>
     If you are having issues connecting, please dial 1-877-668-4493; Access code:  662 191 472.<br/>
     Global dial-in numbers can be found on the Event Info tab of your WebEx Event Center screen.<br/>
     <br/>
-    There is a Q&A following the webinar. You can enter questions in the chat box to the Host.<br/>
+    There is a Q&amp;A following the webinar. You can enter questions in the chat box to the Host.<br/>
     <br/>
     A recording of the webinar will be available 24 hours after the event is complete.<br/>
     <br/>
     For any other issues please email webinars@10gen.com.<br/>
+    </p>
   </section>
+-->
 </section>
 
 <section>
     <h2>The California Gold Rush of 1849</h2>
-    <img src="images/sanfranciscoharbor.jpg"/>
+    <img src="images/sanfranciscoharbor.jpg" alt="San Francisco Harbor during the California Gold Rush"/>
 </section>
 
 <section>
     <h2>MongoDB: Ruby's Mother Lode</h2>
     <div style="float:left">
-        <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" style="border-width:0; background-color:white;"/></a>
+        <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" alt="Ruby logo" style="border-width:0; background-color:white;"/></a>
     </div>
     Ruby is a gem of a programming <br/>language<br/>
     dynamic, multi-paradigm<br/>
@@ -111,12 +116,12 @@
     <div style="clear:both"></div>
     <br/>
     <div style="float:left">
-        <a href="http://www.mongodb.org/"><img src="images/logo-mongodb.png" width="331" style="border-width:0; background-color: #402817;"/></a>
+        <a href="http://www.mongodb.org/"><img src="images/logo-mongodb.png" alt="MongoDB logo" style="border-width:0; width:331px; background-color: #402817;"/></a>
     </div>
     MongoDB is the mother load of DBs<br/>
     <a href="http://bsonspec.org/">BSON</a> documents, high-performance<br/>
     indexing, replication, sharding<br/>
-    flexible, powerful, enjoyable</br>
+    flexible, powerful, enjoyable<br/>
     <div style="clear:both"></div>
     <br/>
     <p><a href="http://www.ruby-lang.org/en/">Ruby</a> and <a href="http://www.mongodb.org/">MongoDB</a> are well matched</p>
@@ -126,25 +131,22 @@
 <section>
     <h2>Outfitting Beyond Your Pickaxe Book</h2>
     <h3><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">Mac OS X</a>- <a href="http://www.mongodb.org/display/DOCS/Quickstart">MongoDB Quickstart</a></h3>
-    <ul>
-        <li>brew update</li>
-        <li>brew install mongodb</li>
-        <li>mongod</li>
-    </ul>
-    <br/>
+    <pre>
+    $ brew update
+    $ brew install mongodb
+    $ mongod
+    </pre>
     <h3><a href="http://www.mongodb.org/display/DOCS/Ruby+Language+Center">Ruby driver setup - Ruby Language Center</a></h3>
     <pre>
     $ gem install mongo
     $ gem install bson_ext
     </pre>
-
     Gemfile
     <pre>
     gem 'mongo'
     gem 'bson_ext'
     </pre>
-
-    <img src="images/RubyMine_logo.gif" style="width:331px; border-width:0; background-color: #402817; float:right"/>
+    <img src="images/RubyMine_logo.gif" alt="RubyMine logo" style="width:331px; border-width:0; background-color: #402817; float:right"/>
     <h3><a href="http://www.jetbrains.com/ruby/">RubyMine</a></h3>
     <p>IDE includes support for Mongoid and MongoDB</p>
 </section>
@@ -163,35 +165,37 @@
     </code></pre>
     <p>a few lines of Ruby gets and parses <a href="http://www.json.org/">JSON</a> data from the web - twitter <a href="https://dev.twitter.com/docs/api/1">API</a></p>
     <ul>
-        <li>libraries/gems</li>
-        <ul>
-            <li>mongo, bson, bson_ext</li>
-            <li>httpclient, json</li>
-        </ul>
-        <li>language capability</li>
-        <ul>
-            <li>method call chaining</li>
-        </ul>
+        <li>libraries/gems
+            <ul>
+                <li>mongo, bson, bson_ext</li>
+                <li>httpclient, json</li>
+            </ul>
+        </li>
+        <li>language capability
+            <ul>
+                <li>method call chaining</li>
+            </ul>
+        </li>
     </ul>
-    <a href="https://twitter.com/"><img src="images/twitter-bird-white-on-blue.png" style="border-width:0; width:200px; float:right"/></a>
+    <a href="https://twitter.com/"><img src="images/twitter-bird-white-on-blue.png" alt="Twitter logo" style="border-width:0; width:120px; float:right"/></a>
 </section>
 
 <section>
     <h3>Twitter friends - load users (continued)</h3>
     <pre><code contenteditable>
-        connection = Mongo::Connection.new
-        db = connection['twitter']
-        collection = db['users']
+    connection = Mongo::Connection.new
+    db = connection['twitter']
+    collection = db['users']
 
-        friend_ids.each_slice(100) do |ids| # best practices
-            users_lookup_uri = "https://api.twitter.com/1/users/lookup.json?user_id=#{ids.join(',')}"
-            response = HTTPClient.get(users_lookup_uri)
+    friend_ids.each_slice(100) do |ids| # best practices
+        users_lookup_uri = "https://api.twitter.com/1/users/lookup.json?user_id=#{ids.join(',')}"
+        response = HTTPClient.get(users_lookup_uri)
 
-            docs = JSON.parse(response.body) # high-level objects - Array of Hashes
-            docs.each{|doc| doc['_id'] = doc['id']} # user supplied _id
-            collection.insert(docs, :safe => true) # no schema! - bulk insert - best practices
-        end
-        puts "users:#{collection.count}"
+        docs = JSON.parse(response.body) # high-level objects - Array of Hashes
+        docs.each{|doc| doc['_id'] = doc['id']} # user supplied _id
+        collection.insert(docs, :safe => true) # no schema! - bulk insert - best practices
+    end
+    puts "users:#{collection.count}"
     </code></pre>
     <p>a small number of lines load <a href="http://www.json.org/">JSON</a> data from the web into a collection</p>
     <ul>
@@ -207,11 +211,11 @@
     <h2>Hitting Paydirt</h2>
     <h3>Twitter top 10 users by followers count</h3>
     <pre><code contenteditable>
-        users = Mongo::Connection.new['twitter']['users']
+    users = Mongo::Connection.new['twitter']['users']
 
-        users.find({}, :sort => { followers_count: -1 }, :limit => 10).each do |doc|
-            puts doc.values_at('followers_count', 'screen_name').join("\t")
-        end
+    users.find({}, :sort => { followers_count: -1 }, :limit => 10).each do |doc|
+        puts doc.values_at('followers_count', 'screen_name').join("\t")
+    end
     </code></pre>
     <p>a simple query with sort and limit</p>
     <ul>
@@ -259,7 +263,6 @@
     <p>a small number of lines loads and records tweets</p>
     <ul>
         <li>indexing - secondary indexes</li>
-        <li>dot notation for nested sub-document fields</li>
         <li>retrieving a subset of fields</li>
         <li>update - record since_id</li>
         <li>count with query selector</li>
@@ -318,11 +321,12 @@
             <li>double, string, embedded document, array, object id, boolean, datetime, null, regex, JS code, symbol, 32-bit integer, timestamp, 64-bit integer, min key, max key</li>
         </ul>
         -->
-        <li>transfer over wire - <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a></li>
-        <ul>
-            <li>request payload includes query and documents to server</li>
-            <li>response and documents to client</li>
-        </ul>
+        <li>transfer over wire - <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">Mongo Wire Protocol</a>
+            <ul>
+                <li>request payload includes query and documents to server</li>
+                <li>response and documents to client</li>
+            </ul>
+        </li>
         <li>store on server disk</li>
         <li>index on server</li>
     </ol>
@@ -334,79 +338,85 @@
     <p>multiple database server nodes</p>
     <p>one primary member, many secondary members</p>
     <br/>
+    <img src="images/replset.png" alt="Replica Set diagram" style="border-width:0; width:500px; float:right"/>
     <ul>
-        <li>high availability</li>
-        <ul>
-            <li>auto-failover via election by majority</li>
-            <li>write concern</li>
-        </ul>
-        <li>read scaling - read preferences</li>
-        <br/>
+        <li>high availability
+            <ul>
+                <li>auto-failover via election by majority</li>
+                <li>write concern</li>
+            </ul>
+        </li>
+        <li>read scaling - read preferences<br/><br/></li>
+
         <li>backups</li>
         <li>upgrades</li>
-        <li>use (hidden) replica for secondary workload</li>
-        <ul>
-            <li>analytics</li>
-            <li>data-processing</li>
-            <li>integration with external systems</li>
-        </ul>
+        <li>use (hidden) replica for secondary workload
+            <ul>
+                <li>analytics</li>
+                <li>data-processing</li>
+                <li>integration with external systems</li>
+            </ul>
+        </li>
     </ul>
-    <img src="images/replset.png" style="width:700px; float:right"/>
 </section>
 
 <section>
     <h3><a href="http://www.mongodb.org/display/DOCS/Sharding">Sharding</a></h3>
+    <img src="images/sharding.png" alt="Sharding diagram" style="border-width:0; width:800px; float:right"/>
     <ul>
-        <li>horizontal scaling across multiple nodes</li>
-        <ul>
-            <li>automatic balancing</li>
-            <li>failover - each shard can be a replica set</li>
-        </ul>
+        <li>horizontal scaling across multiple nodes
+            <ul>
+                <li>automatic balancing</li>
+                <li>failover - each shard can be a replica set</li>
+            </ul>
+        </li>
         <li>shard key - partition by range</li>
         <li>chunks up to 64MB</li>
         <li>routing processes - mongos</li>
-        <br/>
     </ul>
-    <img src="images/sharding.png" style="width:800px; float:right"/>
-
 </section>
 
 <section>
-    <h2>Nuggets</h2>
-    <h3>More MongoDB Features</h3>
+    <h2>Nuggets - More MongoDB Features</h2>
     <ul>
-        <li><a href="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell">mongo</a> shell</li>
-        <ul>
-            <li>JavaScript, native for server-side processing</li>
-            <li>highly recommended for development and administration</li>
-        </ul>
-        <li><a href="http://www.mongodb.org/display/DOCS/MapReduce">map/reduce</a></li>
-        <uL>
-            <li>batch processing of data and aggregation operations</li>
-            <!--<li>all input coming from a collection and output going to a collection</li>-->
-        </uL>
-        <li><a href="http://docs.mongodb.org/manual/applications/aggregation/l">aggregation framework</a></li>
-        <ul>
-            <li>calculate aggregated values without having to use map-reduce</li>
-            <li>pipeline, operators, expressions</li>
-        </ul>
-        <li><a href="http://www.mongodb.org/display/DOCS/GridFS">GridFS</a></li>
-        <ul>
-            <li>specification for storing large files in MongoDB chunks usually 256KB</li>
-        </ul>
-        <li><a href="http://www.mongodb.org/display/DOCS/Capped+Collections">Capped collections</a></li>
-        <ul>
-            <li>fixed sized collections that have a very high performance auto-FIFO age-out feature</li>
-        </ul>
-        <li><a href="http://api.mongodb.org/hadoop/MongoDB%2BHadoop+Connector.html">Hadoop connector</a></li>
-        <ul>
-            <li>reading MongoDB data into Hadoop as well as writing map/reduce results back out</li>
-        </ul>
+        <li><a href="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell">mongo</a> shell
+            <ul>
+                <li>JavaScript, native for server-side processing</li>
+                <li>highly recommended for development and administration</li>
+            </ul>
+        </li>
+        <li><a href="http://www.mongodb.org/display/DOCS/MapReduce">map/reduce</a>
+            <uL>
+                <li>batch processing of data and aggregation operations</li>
+                <!--<li>all input coming from a collection and output going to a collection</li>-->
+            </uL>
+        </li>
+        <li><a href="http://docs.mongodb.org/manual/applications/aggregation/l">aggregation framework</a>
+            <ul>
+                <li>calculate aggregated values without having to use map-reduce</li>
+                <li>pipeline, operators, expressions</li>
+            </ul>
+        </li>
+        <li><a href="http://www.mongodb.org/display/DOCS/GridFS">GridFS</a>
+            <ul>
+                <li>specification for storing large files in MongoDB chunks usually 256KB</li>
+            </ul>
+        </li>
+        <li><a href="http://www.mongodb.org/display/DOCS/Capped+Collections">Capped collections</a>
+            <ul>
+                <li>fixed sized collections that have a very high performance auto-FIFO age-out feature</li>
+            </ul>
+        </li>
+        <li><a href="http://api.mongodb.org/hadoop/MongoDB%2BHadoop+Connector.html">Hadoop connector</a>
+            <ul>
+                <li>reading MongoDB data into Hadoop as well as writing map/reduce results back out</li>
+            </ul>
+        </li>
     </ul>
 </section>
 
 <section>
-    <img src="images/rails.png" style="border-width:0; float:right"/>
+    <img src="images/rails.png" alt="Rails logo" style="border-width:0; float:right"/>
     <h2>Full-Bore Mining with Web Frameworks</h2>
     <p>Ruby on Rails, Sinatra, etc.</p>
     <h3><a href="http://mongomapper.com/">MongoMapper ODM - John Nunemaker</a></h3>
@@ -436,7 +446,7 @@
         <li>good example for Ruby metaprogramming</li>
         <li>small is beautiful</li>
     </ul>
-    <img src="images/mongomapper-logo.png" style="float:right"/>
+    <img src="images/mongomapper-logo.png" alt="MongoMapper logo" style="border-width:0; width:120px; float:right"/>
 </section>
 
 <section>
@@ -468,7 +478,7 @@
         <li>indexing</li>
         <li>extras</li>
     </ul>
-    <img src="images/mongoid-logo.png" style="float:right;width:199px"/>
+    <img src="images/mongoid-logo.png" alt="Mongoid logo" style="border-width:0; width:120px; float:right"/>
 </section>
 
 <section>
@@ -483,7 +493,7 @@
 
         session[:artists].find(name: "Syd Vicious").update(:$push => { instruments: { name: "Bass" }})
     </code></pre>
-    <p>a MongoDB driver for Ruby which exposes a simple, elegant, and fast API.</p>
+    <p>a MongoDB driver for Ruby which exposes a simple, elegant, and fast API</p>
     <ul>
         <li>fast, thread-safe, uses <a href="https://github.com/mperham/sidekiq">sidekiq</a></li>
         <li>pure Ruby - no C extensions</li>
@@ -494,22 +504,26 @@
 </section>
 
 <section>
-    <a href="http://jruby.org/"><img src="images/jruby-logo.png" style="border-width:0; float:right"/></a>
+    <a href="http://jruby.org/"><img src="images/jruby-logo.png" alt="JRuby logo" style="border-width:0; width:200px; float:right"/></a>
     <h3><a href="http://jruby.org/">JRuby</a></h3>
     <ul>
-        <li>The Best of the JVM</li>
-        <ul>
-            <li>High performance</li>
-            <li>Real threading - multi-core parallelism</li>
-            <li>Vast array of libraries</li>
-        </ul>
-        <br/>
-        <li>It's Just Ruby</li>
-        <ul>
-            <li>Ruby 1.8.7 & 1.9.2 compatible</li>
-            <li>Both versions in single install</li>
-        </ul>
-        <br/>
+        <li>The Best of the JVM
+            <ul>
+                <li>High performance</li>
+                <li>Real threading - multi-core parallelism</li>
+                <li>Vast array of libraries</li>
+            </ul>
+            <br/>
+        </li>
+
+        <li>It's Just Ruby
+            <ul>
+                <li>Ruby 1.8.7 & 1.9.2 compatible</li>
+                <li>Both versions in single install</li>
+            </ul>
+            <br/>
+        </li>
+
         <li>bson_java</li>
         <li>Mongo Hadoop connector</li>
     </ul>
@@ -517,14 +531,13 @@
 
 <section>
     <h2>Fool's Gold - RDBMS Case Study</h2>
-    <img src="images/photoshop_Lightroom_1AF9606.jpeg" style="border-width:0; float:right"/>
+    <img src="images/photoshop_Lightroom_1AF9606.jpeg" alt="Adobe Photoshop Lightroom" style="border-width:0; width:120px; float:right"/>
     <h3><a href="http://www.adobe.com/products/photoshop-lightroom.html">Adobe Photoshop Lightroom</a></h3>
     <p>"Lightroom 3 Catalog.lrcat"</p>
     <ul>
         <li>0.5 GB</li>
         <li>66 Sqlite3 tables</li>
         <li>20 tables with column image INTEGER</li>
-        <br/>
         <li>can be loaded with 40 lines of Ruby</li>
         <li>can be reduced to 1 image collection</li>
     </ul>
@@ -532,12 +545,12 @@
     <h3>The cost of using RDBMS for persistence</h3>
     <ul>
         <li>RDBMS flattened and normalized our data into rigid tables</li>
-        <br/>
-        <li>RDBMS costs O(10**6) - O(1000000) and more with many joins</li>
-        <ul>
-            <li>Memory O(10**9/sec) - O(1000000000)</li>
-            <li>RDBMS O(10**3/sec) - O(1000)</li>
-        </ul>
+        <li>RDBMS costs O(10**6) - O(1000000) and more with many joins
+            <ul>
+                <li>Memory O(10**9/sec) - O(1000000000)</li>
+                <li>RDBMS O(10**3/sec) - O(1000)</li>
+            </ul>
+        </li>
     </ul>
 </section>
 
@@ -546,44 +559,48 @@
     <h3>MongoDB Summary</h3>
     <ul>
         <li>replica sets for high availability</li>
-        <li>sharded clusters for scaling</li>
-        <br/>
-        <li>very high performance</li>
-        <ul>
-            <li>secondary indices</li>
-            <li>BSON is fast for transfer, storage, queries</li>
-            <li>server-side processing</li>
+        <li>sharded clusters for scaling<br/><br/></li>
+
+        <li>very high performance
             <ul>
-                <li>map-reduce, aggregation</li>
-                <li>Hadoop connector</li>
+                <li>secondary indices</li>
+                <li>BSON is fast for transfer, storage, queries</li>
+                <li>server-side processing
+                    <ul>
+                        <li>map-reduce, aggregation</li>
+                        <li>Hadoop connector</li>
+                    </ul>
+                </li>
             </ul>
-        </ul>
-        <br/>
+        </li>
         <li>very low cost - open source - community</li>
     </ul>
     <br/>
-    <a href="http://www.mongodb.org/"><img src="images/logo_mongo.png" style="width:331px; border-width:0px; margin:20px"/></a>
+    <a href="http://www.mongodb.org/"><img src="images/logo_mongo.png" alt="Mongo logo" style="border-width:0px; width:331px; margin:20px"/></a>
 </section>
 
 <section>
     <h3>MongoDB Conclusion</h3>
     <ul>
-        <li>enjoyable software development</li>
-        <ul>
-            <li>10gen and Moped Ruby drivers</li>
-            <li>MongoMapper and Mongoid ODMs</li>
-            <li>no schema migrations forced</li>
-        </ul>
-        <br/>
-        <li><a href="http://www.mongodb.org/display/DOCS/Drivers">well-matched to programming languages</a></li>
-        <ul>
-            <li>bigger data</li>
-            <li>Ruby and objects</li>
-        </ul>
+        <li>enjoyable software development
+            <ul>
+                <li>10gen and Moped Ruby drivers</li>
+                <li>MongoMapper and Mongoid ODMs</li>
+                <li>no schema migrations forced</li>
+            </ul>
+            <br/>
+        </li>
+
+        <li><a href="http://www.mongodb.org/display/DOCS/Drivers">well-matched to programming languages</a>
+            <ul>
+                <li>bigger data</li>
+                <li>Ruby and objects</li>
+            </ul>
+        </li>
     </ul>
     <div>
-        <a href="http://www.mongodb.org/"><img src="images/logo-mongodb.png" height="121" style="border-width:0; background-color: #402817;"/></a>
-        <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" style="border-width:0; background-color:white;"/></a>
+        <a href="http://www.mongodb.org/"><img src="images/logo-mongodb.png" alt="MontoDB logo" style="border-width:0; height:121px; background-color: #402817;"/></a>
+        <a href="http://www.ruby-lang.org/en/"><img src="images/ruby-logo.gif" alt="Ruby logo" style="border-width:0; background-color:white;"/></a>
     </div>
 </section>
 
@@ -601,7 +618,7 @@
     <br/>
     <a href="http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest">http://blog.10gen.com/post/32158163299/mongodb-and-ruby-blogging-contest</a>
     <p>Google: mongodb and ruby blogging contest</p>
-    <img src="images/10gen_new_logo.png" style="border-width:0; background-color:white; border-width: 20px"/>
+    <img src="images/10gen_new_logo.png" alt="10gen logo" style="border-width:0; background-color:white; border-width: 20px"/>
 </section>
 
 <section>
@@ -624,8 +641,8 @@
     </pre>
     <ul>
         <li><a href="https://github.com/gjmurakami-10gen/talk-mother-load">https://github.com/gjmurakami-10gen/talk-mother-load</a></li>
-        <li>git://github.com/gjmurakami-10gen/talk-mother-load.git</li>
-        <br/>
+        <li>git://github.com/gjmurakami-10gen/talk-mother-load.git<br/><br/></li>
+
         <li><a href="http://www.mongodb.org/display/DOCS/Home">MongoDB</a></li>
         <li><a href="http://www.mongodb.org/display/DOCS/Ruby+Language+Center">Ruby Language Center</a></li>
         <li><a href="https://github.com/mongodb/mongo-ruby-driver">Github mongodb/mongo-ruby-driver</a></li>
