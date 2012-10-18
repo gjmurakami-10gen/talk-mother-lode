@@ -2,15 +2,19 @@
 or
 # MongoDB: Ruby's Mother Lode
 
-Gary J. Murakami, Ph.D.
+    Gary J. Murakami, Ph.D.
 
-Lead Engineer & Ruby Evangelist
-10gen, the MongoDB company
-gary.murakami@10gen.com
+    Lead Engineer & Ruby Evangelist
+    10gen, the MongoDB company
+    gary.murakami@10gen.com
 
-Tuesday, September 25, 2012
+    Tuesday, September 25, 2012
 
-webinar
+    webinar
+
+The slides can be display directly via github gh-pages:
+
+    http://gjmurakami-10gen.github.com/talk-mother-load/
 
 NOTES
 =====
