@@ -1,16 +1,16 @@
 /*!
- * reveal.js 2.0 r20
+ * reveal.js 2.1 r25
  * http://lab.hakim.se/reveal-js
  * MIT licensed
  * 
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 var Reveal = (function(){
+
+	'use strict';
 	
 	var HORIZONTAL_SLIDES_SELECTOR = '.reveal .slides>section',
 		VERTICAL_SLIDES_SELECTOR = '.reveal .slides>section.present>section',
-
-		IS_TOUCH_DEVICE = !!( 'ontouchstart' in window ),
 
 		// Configurations defaults, can be overridden at initialization time 
 		config = {
@@ -26,6 +26,9 @@ var Reveal = (function(){
 			// Enable keyboard shortcuts for navigation
 			keyboard: true,
 
+			// Enable the slide overview mode
+			overview: true,
+
 			// Loop the presentation
 			loop: false,
 
@@ -38,6 +41,9 @@ var Reveal = (function(){
 
 			// Apply a 3D roll to links on hover
 			rollingLinks: true,
+
+			// Transition style (see /css/theme)
+			theme: 'default', 
 
 			// Transition style
 			transition: 'default', // default/cube/page/concave/linear(2d),
@@ -64,16 +70,16 @@ var Reveal = (function(){
 
 		// Detect support for CSS 3D transforms
 		supports3DTransforms =  'WebkitPerspective' in document.body.style ||
-                        		'MozPerspective' in document.body.style ||
-                        		'msPerspective' in document.body.style ||
-                        		'OPerspective' in document.body.style ||
-                        		'perspective' in document.body.style,
-        
-        supports2DTransforms =  'WebkitTransform' in document.body.style ||
-                        		'MozTransform' in document.body.style ||
-                        		'msTransform' in document.body.style ||
-                        		'OTransform' in document.body.style ||
-                        		'transform' in document.body.style,
+								'MozPerspective' in document.body.style ||
+								'msPerspective' in document.body.style ||
+								'OPerspective' in document.body.style ||
+								'perspective' in document.body.style,
+		
+		supports2DTransforms =  'WebkitTransform' in document.body.style ||
+								'MozTransform' in document.body.style ||
+								'msTransform' in document.body.style ||
+								'OTransform' in document.body.style ||
+								'transform' in document.body.style,
 		
 		// Throttles mouse wheel navigation
 		mouseWheelTimeout = 0,
@@ -111,6 +117,7 @@ var Reveal = (function(){
 		extend( config, options );
 
 		// Cache references to DOM elements
+		dom.theme = document.querySelector( '#theme' );
 		dom.wrapper = document.querySelector( '.reveal' );
 		dom.progress = document.querySelector( '.reveal .progress' );
 		dom.progressbar = document.querySelector( '.reveal .progress span' );
@@ -222,6 +229,18 @@ var Reveal = (function(){
 			dom.progress.style.display = 'block';
 		}
 
+		// Load the theme in the config, if it's not already loaded
+		if( config.theme && dom.theme ) {
+			var themeURL = dom.theme.getAttribute( 'href' );
+			var themeFinder = /[^/]*?(?=\.css)/;
+			var themeName = themeURL.match(themeFinder)[0];
+			if(  config.theme !== themeName ) {
+				themeURL = themeURL.replace(themeFinder, config.theme);
+				dom.theme.setAttribute( 'href', themeURL );
+			}
+		}
+
+
 		if( config.transition !== 'default' ) {
 			dom.wrapper.classList.add( config.transition );
 		}
@@ -305,7 +324,7 @@ var Reveal = (function(){
 		return function( event ) {
 			event.preventDefault();
 			delegate.call();
-		}
+		};
 	}
 
 	/**
@@ -324,12 +343,9 @@ var Reveal = (function(){
 	 * @param {Object} event
 	 */
 	function onDocumentKeyDown( event ) {
-		// FFT: Use document.querySelector( ':focus' ) === null 
-		// instead of checking contentEditable?
-
 		// Disregard the event if the target is editable or a 
 		// modifier is present
-		if ( event.target.contentEditable != 'inherit' || event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) return;
+		if ( document.querySelector( ':focus' ) !== null || event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) return;
 				
 		var triggered = false;
 
@@ -497,17 +513,17 @@ var Reveal = (function(){
 	 */
 	function linkify() {
 		if( supports3DTransforms && !( 'msPerspective' in document.body.style ) ) {
-        	var nodes = document.querySelectorAll( '.reveal .slides section a:not(.image)' );
+			var nodes = document.querySelectorAll( '.reveal .slides section a:not(.image)' );
 
-	        for( var i = 0, len = nodes.length; i < len; i++ ) {
-	            var node = nodes[i];
-	            
-	            if( node.textContent && !node.querySelector( 'img' ) && ( !node.className || !node.classList.contains( node, 'roll' ) ) ) {
-	                node.classList.add( 'roll' );
-	                node.innerHTML = '<span data-title="'+ node.text +'">' + node.innerHTML + '</span>';
-	            }
-	        };
-        }
+			for( var i = 0, len = nodes.length; i < len; i++ ) {
+				var node = nodes[i];
+				
+				if( node.textContent && !node.querySelector( 'img' ) && ( !node.className || !node.classList.contains( node, 'roll' ) ) ) {
+					node.classList.add( 'roll' );
+					node.innerHTML = '<span data-title="'+ node.text +'">' + node.innerHTML + '</span>';
+				}
+			}
+		}
 	}
 
 	/**
@@ -518,48 +534,54 @@ var Reveal = (function(){
 	 * can't be improved.
 	 */
 	function activateOverview() {
+
+		// Only proceed if enabled in config
+		if( config.overview ) {
 		
-		dom.wrapper.classList.add( 'overview' );
+			dom.wrapper.classList.add( 'overview' );
 
-		var horizontalSlides = Array.prototype.slice.call( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+			var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
 
-		for( var i = 0, len1 = horizontalSlides.length; i < len1; i++ ) {
-			var hslide = horizontalSlides[i],
-				htransform = 'translateZ(-2500px) translate(' + ( ( i - indexh ) * 105 ) + '%, 0%)';
+			for( var i = 0, len1 = horizontalSlides.length; i < len1; i++ ) {
+				var hslide = horizontalSlides[i],
+					htransform = 'translateZ(-2500px) translate(' + ( ( i - indexh ) * 105 ) + '%, 0%)';
+				
+				hslide.setAttribute( 'data-index-h', i );
+				hslide.style.display = 'block';
+				hslide.style.WebkitTransform = htransform;
+				hslide.style.MozTransform = htransform;
+				hslide.style.msTransform = htransform;
+				hslide.style.OTransform = htransform;
+				hslide.style.transform = htransform;
 			
-			hslide.setAttribute( 'data-index-h', i );
-			hslide.style.display = 'block';
-			hslide.style.WebkitTransform = htransform;
-			hslide.style.MozTransform = htransform;
-			hslide.style.msTransform = htransform;
-			hslide.style.OTransform = htransform;
-			hslide.style.transform = htransform;
+				if( !hslide.classList.contains( 'stack' ) ) {
+					// Navigate to this slide on click
+					hslide.addEventListener( 'click', onOverviewSlideClicked, true );
+				}
 		
-			if( !hslide.classList.contains( 'stack' ) ) {
-				// Navigate to this slide on click
-				hslide.addEventListener( 'click', onOverviewSlideClicked, true );
+				var verticalSlides = hslide.querySelectorAll( 'section' );
+
+				for( var j = 0, len2 = verticalSlides.length; j < len2; j++ ) {
+					var vslide = verticalSlides[j],
+						vtransform = 'translate(0%, ' + ( ( j - ( i === indexh ? indexv : 0 ) ) * 105 ) + '%)';
+
+					vslide.setAttribute( 'data-index-h', i );
+					vslide.setAttribute( 'data-index-v', j );
+					vslide.style.display = 'block';
+					vslide.style.WebkitTransform = vtransform;
+					vslide.style.MozTransform = vtransform;
+					vslide.style.msTransform = vtransform;
+					vslide.style.OTransform = vtransform;
+					vslide.style.transform = vtransform;
+
+					// Navigate to this slide on click
+					vslide.addEventListener( 'click', onOverviewSlideClicked, true );
+				}
+				
 			}
-	
-			var verticalSlides = Array.prototype.slice.call( hslide.querySelectorAll( 'section' ) );
 
-			for( var j = 0, len2 = verticalSlides.length; j < len2; j++ ) {
-				var vslide = verticalSlides[j],
-					vtransform = 'translate(0%, ' + ( ( j - ( i === indexh ? indexv : 0 ) ) * 105 ) + '%)';
-
-				vslide.setAttribute( 'data-index-h', i );
-				vslide.setAttribute( 'data-index-v', j );
-				vslide.style.display = 'block';
-				vslide.style.WebkitTransform = vtransform;
-				vslide.style.MozTransform = vtransform;
-				vslide.style.msTransform = vtransform;
-				vslide.style.OTransform = vtransform;
-				vslide.style.transform = vtransform;
-
-				// Navigate to this slide on click
-				vslide.addEventListener( 'click', onOverviewSlideClicked, true );
-			}
-			
 		}
+
 	}
 	
 	/**
@@ -567,24 +589,31 @@ var Reveal = (function(){
 	 * active slide.
 	 */
 	function deactivateOverview() {
-		dom.wrapper.classList.remove( 'overview' );
+		
+		// Only proceed if enabled in config
+		if( config.overview ) {
 
-		var slides = Array.prototype.slice.call( document.querySelectorAll( '.reveal .slides section' ) );
+			dom.wrapper.classList.remove( 'overview' );
 
-		for( var i = 0, len = slides.length; i < len; i++ ) {
-			var element = slides[i];
+			// Select all slides
+			var slides = Array.prototype.slice.call( document.querySelectorAll( '.reveal .slides section' ) );
 
-			// Resets all transforms to use the external styles
-			element.style.WebkitTransform = '';
-			element.style.MozTransform = '';
-			element.style.msTransform = '';
-			element.style.OTransform = '';
-			element.style.transform = '';
+			for( var i = 0, len = slides.length; i < len; i++ ) {
+				var element = slides[i];
 
-			element.removeEventListener( 'click', onOverviewSlideClicked );
+				// Resets all transforms to use the external styles
+				element.style.WebkitTransform = '';
+				element.style.MozTransform = '';
+				element.style.msTransform = '';
+				element.style.OTransform = '';
+				element.style.transform = '';
+
+				element.removeEventListener( 'click', onOverviewSlideClicked );
+			}
+
+			slide();
+			
 		}
-
-		slide();
 	}
 
 	/**
@@ -805,8 +834,9 @@ var Reveal = (function(){
 		// Remove the 'enabled' class from all directions
 		[ dom.controlsLeft, dom.controlsRight, dom.controlsUp, dom.controlsDown ].forEach( function( node ) {
 			node.classList.remove( 'enabled' );
-		} )
+		} );
 
+		// Add the 'enabled' class to the available routes
 		if( routes.left ) dom.controlsLeft.classList.add( 'enabled' );
 		if( routes.right ) dom.controlsRight.classList.add( 'enabled' );
 		if( routes.up ) dom.controlsUp.classList.add( 'enabled' );
@@ -959,6 +989,9 @@ var Reveal = (function(){
 		return false;
 	}
 
+	/**
+	 * Cues a new automated slide if enabled in the config.
+	 */
 	function cueAutoSlide() {
 		clearTimeout( autoSlideTimeout );
 
@@ -1098,12 +1131,12 @@ var Reveal = (function(){
 
 		// Returns the previous slide element, may be null
 		getPreviousSlide: function() {
-			return previousSlide
+			return previousSlide;
 		},
 
 		// Returns the current slide element
 		getCurrentSlide: function() {
-			return currentSlide
+			return currentSlide;
 		},
 
 		// Helper method, retrieves query string as a key/value hash
@@ -1131,4 +1164,3 @@ var Reveal = (function(){
 	};
 	
 })();
-
