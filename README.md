@@ -5,7 +5,7 @@ or
     Gary J. Murakami, Ph.D.
 
     Lead Engineer & Ruby Evangelist
-    10gen, the MongoDB company
+    10gen (the MongoDB company)
     gary.murakami@10gen.com
 
     Tuesday, September 25, 2012
