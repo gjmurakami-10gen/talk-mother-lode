@@ -233,8 +233,9 @@ body {
 }
 
 .reveal small {
+	display: inline-block;
 	font-size: 0.6em;
-	line-height: 1em;
+	line-height: 1.2em;
 	vertical-align: top;
 }
 
@@ -401,12 +402,12 @@ body {
 
 .reveal .slides {
 	position: absolute;
-	//max-width: 900px;
+	max-width: 900px;
 	width: 80%;
 	height: 60%;
 	left: 50%;
 	top: 50%;
-	margin-top: -400px; //was -320px
+	margin-top: -320px;
 	padding: 20px 0px;
 	overflow: visible;
 	

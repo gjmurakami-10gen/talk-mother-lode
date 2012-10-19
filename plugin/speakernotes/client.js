@@ -6,6 +6,7 @@
 	var socketId = Math.random().toString().slice(2);
 	
 	console.log('View slide notes at ' + window.location.origin + '/notes/' + socketId);
+	window.open(window.location.origin + '/notes/' + socketId, 'notes-' + socketId)
 
 	Reveal.addEventListener( 'slidechanged', function( event ) {
 		var nextindexh;
@@ -27,7 +28,9 @@
 			indexv : event.indexv,
 			nextindexh : nextindexh,
 			nextindexv : nextindexv,
-			socketId : socketId
+			socketId : socketId,
+			markdown : notes ? typeof notes.getAttribute('data-markdown') === 'string' : false
+
 		};
 
 		socket.emit('slidechanged', slideData);
