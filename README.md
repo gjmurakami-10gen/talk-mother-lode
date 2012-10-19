@@ -14,7 +14,7 @@ or
 
 The slides can be display directly via github gh-pages:
 
-    http://gjmurakami-10gen.github.com/talk-mother-load/
+http://gjmurakami-10gen.github.com/talk-mother-lode/
 
 NOTES
 =====
